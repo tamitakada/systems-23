@@ -6,19 +6,16 @@
 #include <sys/socket.h>
 #include <sys/stat.h>
 #include <string.h>
+#include <netdb.h>
 #include <errno.h>
+#include <sys/wait.h>
 
 #ifndef NETWORKING_H
 #define NETWORKING_H
-#define ACK "HOLA"
-#define WKP "mario"
-
-#define HANDSHAKE_BUFFER_SIZE 10
-#define BUFFER_SIZE 1000
 
 int server_setup();
-int server_connect(int from_client);
-int server_handshake(int *to_client, int from_client);
-int client_handshake();
+void server_connect(int sd);
+int client_connect();
+void handle_client(int sd);
 
 #endif
